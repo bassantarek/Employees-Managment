@@ -1,0 +1,31 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+
+    <div style="width: 60%;">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Employee Name</label>
+            <input type="text" class="form-control" [(ngModel)]="EmployeeName" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <!--  -->
+        <div class="form-group">
+            <label for="inputState">Department</label>
+            <select id="inputState" class="form-control" [(ngModel)]="Department">
+        <option selected>--Select--</option>
+        <option *ngFor="let depName of DepartmentList">{{depName.DepartmentName}}</option>
+      </select>
+        </div>
+        <!--  -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Date of joining</label>
+            <input type="date" class="form-control" [(ngModel)]="DateOfJoining" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <!--  -->
+    </div>
+
+    <div class="mx-3 bg-highlight" style="width: 40%;">
+        <img [src]=PhotoFilePath height="250px" width="200px" alt="">
+        <input type="file" (change)="uploadPhoto($event)" class="mx-2">
+    </div>
+</div>
+
+<button (click)="addEmployee()" *ngIf="emp.EmployeeId==0" type="button" class="btn btn-primary my-3">Add</button>
+<button (click)="updateEmployee()" *ngIf="emp.EmployeeId!==0" type="button" class="btn btn-primary my-3">Update</button>
